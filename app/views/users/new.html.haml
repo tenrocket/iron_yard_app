@@ -1,0 +1,19 @@
+Sign Up!
+%br
+= form_for @new_user, method: :post do |f|
+	Name:
+	= f.text_field :name
+	Email:
+	= f.email_field :email
+	%br
+	Password
+	= f.password_field :password
+	Password Confirmation
+	= f.password_field :password_confirmation
+	%br
+	Cohort
+	= f.select :cohort_id, Cohort.all.collect {|c| ["#{c.season}, #{c.course}", c.id]}
+	Request Admin
+	= f.check_box :admin
+	%br
+	= f.submit "Sign up"

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyString
+  attachment: MyString
+  complete: false
+  reviewing: false
+  due_date: 2014-05-29
+  user_id: MyString
+
+two:
+  title: MyString
+  description: MyString
+  attachment: MyString
+  complete: false
+  reviewing: false
+  due_date: 2014-05-29
+  user_id: MyString
