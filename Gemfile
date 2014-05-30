@@ -13,4 +13,5 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 gem 'bcrypt', '~> 3.1.7'
 gem 'carrierwave'
+gem 'debugger'
 gem 'haml'

@@ -1,0 +1,32 @@
+%h1 #{@cohort.season}, #{@cohort.course}
+
+ACTIVE STUDENTS:
+%br
+%br
+-@cohort.users.each do |u|
+	= "#{u.name}, #{u.email}"
+	%br
+%br
+
+ACTIVE ASSIGNMENTS:
+%br
+%br
+-@cohort.assignments.each do |a|
+	%a{href: "/assignments/#{a.id}"} #{a.title}, #{a.due_date}
+	%br
+%br
+
+EDIT COHORT
+= form_for @cohort, method: :put do |f|
+	SEASON:
+	= f.select :season, seasons.each.collect {|c| [c, c]}
+	COURSE:
+	= f.text_field :course 
+	LOCATION:
+	= f.select :location_id, Location.all.collect {|l| ["#{l.city}, #{l.state}", l.id]}
+	%br
+	%br
+	= f.submit "SUBMIT COHORT"
+
+	= form_for @cohort, method: :delete do |f|
+		= f.submit "REMOVE COHORT", method: :delete

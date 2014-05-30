@@ -11,6 +11,10 @@ class UsersController < ApplicationController
 	def create
 		@new_user = User.new(user_params)
 		if @new_user.save
+			# debugger
+			if params[:request] == "1"
+				UserMailer.new_admin_request(@new_user)
+			end
 			redirect_to users_path, notice: "Thanks for signing up!  You are awesome."
 		else
 			render :new

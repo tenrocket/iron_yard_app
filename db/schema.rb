@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140529131352) do
+ActiveRecord::Schema.define(version: 20140530152639) do
 
   create_table "assignments", force: true do |t|
     t.string   "title"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20140529131352) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "cohort_id"
   end
 
   create_table "cohorts", force: true do |t|
@@ -69,6 +70,7 @@ ActiveRecord::Schema.define(version: 20140529131352) do
     t.integer  "cohort_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "request"
   end
 
 end

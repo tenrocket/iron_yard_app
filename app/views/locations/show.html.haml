@@ -1,0 +1,25 @@
+%h1 #{@location.city}, #{@location.state}
+
+%h3 ACTIVE COHORTS
+- @location.cohorts.each do |c|
+	%a{href: "/cohorts/#{c.id}"} #{c.season}, #{c.course}
+	%br
+%br
+%br
+EDIT LOCATION
+= form_for @location, method: :put do |f|
+	CITY:
+	= f.text_field :city
+	STATE:
+	= f.text_field :state
+	ZIP:
+	= f.text_field :zip
+	ADDRESS:
+	= f.text_field :address
+	%br
+	%br
+	= f.submit "SUBMIT LOCATION"
+
+	= form_for @location, method: :delete do |f|
+		= f.submit "REMOVE LOCATION", method: :delete
+

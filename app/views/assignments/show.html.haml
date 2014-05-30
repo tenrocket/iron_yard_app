@@ -1,0 +1,23 @@
+%h1 #{@assignment.title}
+%h3 DUE: #{@assignment.due_date}
+= "#{@assignment.cohort.season}, #{@assignment.cohort.course}"
+%br
+= @assignment.description
+%br
+%br
+EDIT ASSIGNMENT
+= form_for @assignment, method: :put do |f|
+	TITLE:
+	= f.text_field :title
+	DESCRIPTION:
+	= f.text_field :description 
+	DEADLINE:
+	= f.date_select :due_date
+	COHORT:
+	= f.select :cohort_id, Cohort.all.collect {|c| ["#{c.season}, #{c.course}", c.id]}
+	%br
+	%br
+	= f.submit "SUBMIT ASSIGNMENT"
+
+	= form_for @assignment, method: :delete do |f|
+		= f.submit "REMOVE ASSIGNMENT", method: :delete

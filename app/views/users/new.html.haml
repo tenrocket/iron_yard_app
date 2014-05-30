@@ -14,6 +14,6 @@ Sign Up!
 	Cohort
 	= f.select :cohort_id, Cohort.all.collect {|c| ["#{c.season}, #{c.course}", c.id]}
 	Request Admin
-	= f.check_box :admin
+	= check_box_tag :request
 	%br
 	= f.submit "Sign up"
