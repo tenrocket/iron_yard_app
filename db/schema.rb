@@ -11,14 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140530152639) do
+ActiveRecord::Schema.define(version: 20140531161629) do
 
   create_table "assignments", force: true do |t|
     t.string   "title"
     t.string   "description"
     t.string   "attachment"
-    t.boolean  "complete"
-    t.boolean  "reviewing"
     t.date     "due_date"
     t.integer  "user_id"
     t.datetime "created_at"
@@ -34,7 +32,7 @@ ActiveRecord::Schema.define(version: 20140530152639) do
     t.datetime "updated_at"
   end
 
-  create_table "commments", force: true do |t|
+  create_table "comments", force: true do |t|
     t.string   "content"
     t.string   "commentable_type"
     t.integer  "commentable_id"
@@ -60,6 +58,9 @@ ActiveRecord::Schema.define(version: 20140530152639) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "assignment_id"
+    t.boolean  "reviewing"
+    t.boolean  "complete"
   end
 
   create_table "users", force: true do |t|

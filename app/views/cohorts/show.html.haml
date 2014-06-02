@@ -6,6 +6,9 @@ ACTIVE STUDENTS:
 -@cohort.users.each do |u|
 	= "#{u.name}, #{u.email}"
 	%br
+	= form_for u, method: :put do |f|
+		MAKE ADMIN
+		= f.check_box :admin
 %br
 
 ACTIVE ASSIGNMENTS:

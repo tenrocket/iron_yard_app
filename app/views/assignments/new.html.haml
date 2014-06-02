@@ -1,0 +1,14 @@
+%br
+%h3 ADD NEW ASSIGNMENT
+= form_for Assignment.new, method: :post do |f|
+	TITLE:
+	= f.text_field :title
+	DESCRIPTION:
+	= f.text_field :description 
+	DEADLINE:
+	= f.date_select :due_date
+	COHORT:
+	= f.select :cohort_id, Cohort.all.collect {|c| ["#{c.season}, #{c.course}", c.id]}
+	%br
+	%br
+	= f.submit "SUBMIT ASSIGNMENT"

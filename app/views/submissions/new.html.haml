@@ -1,0 +1,14 @@
+%h3 SUBMIT ASSIGNMENT
+
+= form_for Submission.new, method: :post do |f|
+	ASSIGNMENT
+	= f.select :assignment_id, Assignment.all.collect {|a| ["#{a.title}, #{a.due_date}", a.id]}
+	TITLE
+	= f.text_field :title
+	LINKS
+	= f.text_area :description
+	ATTACHMENT
+	= f.file_field :attachment
+	%br
+	%br
+	= f.submit "SUBMIT"

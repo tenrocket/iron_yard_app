@@ -4,20 +4,35 @@
 %br
 = @assignment.description
 %br
-%br
-EDIT ASSIGNMENT
-= form_for @assignment, method: :put do |f|
-	TITLE:
-	= f.text_field :title
-	DESCRIPTION:
-	= f.text_field :description 
-	DEADLINE:
-	= f.date_select :due_date
-	COHORT:
-	= f.select :cohort_id, Cohort.all.collect {|c| ["#{c.season}, #{c.course}", c.id]}
-	%br
-	%br
-	= f.submit "SUBMIT ASSIGNMENT"
 
-	= form_for @assignment, method: :delete do |f|
-		= f.submit "REMOVE ASSIGNMENT", method: :delete
+%hr
+
+%h3 STUDENT SUBMISSIONS
+
+- @assignment.submissions.each do |a|
+	%a{href: "/users/#{a.user.id}"} #{a.user.name}
+	%br
+	%a{href: "/submissions/#{a.id}"} #{a.title}
+	%br
+	= a.description
+	%br
+	%br
+
+%h3 COMMENTS
+
+- @assignment.comments.each do |c|
+	= "#{c.content} -"
+	%a{href: "/users/#{c.user.id}"} #{c.user.name}
+	%br
+	= form_for c, method: :delete do |f|
+		= f.submit "x", method: :delete
+%br
+
+ADD COMMENT
+= form_for @new_comment, method: :post do |f|
+	= f.hidden_field :commentable_id, value: @assignment.id
+	= f.hidden_field :commentable_type, value: "Assignment"
+	= f.text_area :content
+	%br
+	= f.submit "POST"
+	%br

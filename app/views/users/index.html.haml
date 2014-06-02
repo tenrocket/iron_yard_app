@@ -1,7 +1,7 @@
 %br
 %br
 - @users.each do |user|
-	= user.name
+	%a{href: "/users/#{user.id}"} #{user.name}
 	%br
 	= user.email
 	%br

@@ -1,0 +1,12 @@
+= form_for @submission, method: :put do |f|
+	%br
+	%h3 HOMEWORK STATUS
+
+	%br
+	UNDER REVIEW
+	= f.radio_button :complete, false
+	COMPLETE
+	= f.radio_button :complete, true
+	%br
+	%br
+	= f.submit "SUBMIT"

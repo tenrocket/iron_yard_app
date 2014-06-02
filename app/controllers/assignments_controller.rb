@@ -9,11 +9,16 @@ class AssignmentsController < ApplicationController
 	end
 
 	def create
-		@new_assignment = Assignment.new(assignment_params)
-		if @new_assignment.save
-			redirect_to assignments_path
+		@user = current_user
+		if @user.admin == true
+			@new_assignment = Assignment.new(assignment_params)
+			if @new_assignment.save
+				redirect_to assignments_path
+			else
+				redirect_to :new
+			end
 		else
-			redirect_to :new
+			redirect_to :back, notice: "Access denied.  Only administrators may view submissions."
 		end
 	end
 
@@ -41,12 +46,13 @@ class AssignmentsController < ApplicationController
 
 	def show
 		@assignment = Assignment.find(params[:id])
+		@new_comment = Comment.new
 	end
 
 	private
 
 	def assignment_params
-		params.require(:assignment).permit!
+		params.require(:assignment).permit(:title, :description, :due_date, :attachment, :user_id, :created_at, :updated_at, :cohort_id, commentable_attributes:[:content])
 	end
 
 end

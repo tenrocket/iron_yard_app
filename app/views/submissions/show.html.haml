@@ -1,0 +1,46 @@
+= @submission.user.name
+%br
+= @submission.title
+%br
+= @submission.description
+%br
+%br
+%h3 STATUS: #{@status}
+
+%h3 EDIT SUBMISSION
+
+= form_for @submission, method: :put do |f|
+	ASSIGNMENT
+	= f.select :assignment_id, Assignment.all.collect {|a| ["#{a.title}, #{a.due_date}", a.id]}
+	TITLE
+	= f.text_field :title
+	LINKS
+	= f.text_area :description
+	ATTACHMENT
+	= f.file_field :attachment
+	%br
+	= f.submit "SAVE CHANGES"
+%br
+(ADMIN ONLY)
+= button_to "UPDATE STATUS", edit_submission_path, method: :get
+%br
+%hr
+%h3 COMMENTS
+
+- @submission.comments.each do |c|
+	%br
+	= "#{c.content} -"
+	%a{href: "/users/#{c.user.id}"} #{c.user.name}
+	%br
+	= form_for c, method: :delete do |f|
+		= f.submit "x", method: :delete
+%br
+
+ADD COMMENT
+= form_for @new_comment, method: :post do |f|
+	= f.hidden_field :commentable_id, value: @submission.id
+	= f.hidden_field :commentable_type, value: "Submission"
+	= f.text_area :content
+	%br
+	= f.submit "POST"
+	%br

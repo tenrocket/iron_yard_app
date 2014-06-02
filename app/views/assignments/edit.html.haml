@@ -1,0 +1,17 @@
+%br
+EDIT ASSIGNMENT
+= form_for @assignment, method: :put do |f|
+	TITLE:
+	= f.text_field :title
+	DESCRIPTION:
+	= f.text_field :description 
+	DEADLINE:
+	= f.date_select :due_date
+	COHORT:
+	= f.select :cohort_id, Cohort.all.collect {|c| ["#{c.season}, #{c.course}", c.id]}
+	%br
+	%br
+	= f.submit "SUBMIT CHANGES"
+
+	= form_for @assignment, method: :delete do |f|
+		= f.submit "REMOVE ASSIGNMENT", method: :delete

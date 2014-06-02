@@ -40,7 +40,12 @@ class CohortsController < ApplicationController
 	end
 
 	def show
-		@cohort = Cohort.find(params[:id])
+		@user = current_user
+		if @user.admin == true
+			@cohort = Cohort.find(params[:id])
+		else
+			redirect_to :back, notice: "Access denied.  Only administrators may view the cohorts page."
+		end
 	end
 
 	private

@@ -1,0 +1,19 @@
+%h1 #{@user.name}
+
+%h3 HOMEWORK SUBMISSIONS
+
+-@user.submissions.each do |s|
+	/ ASSIGNMENT
+	/ = s.assignment.title
+	/ = a.assignment.due_date
+	%br
+	%a{href: "/submissions/#{s.id}"} #{s.title}
+	%br
+	= s.description
+	%br
+%br
+%br
+%hr
+
+
+

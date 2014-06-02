@@ -28,7 +28,7 @@ class UsersController < ApplicationController
 	def update
 		@user = User.find(params[:id])
 		if @user.update_attributes(user_params)
-			redirect_to users_path
+			redirect_to user_path
 		else
 			render :edit
 		end
@@ -44,6 +44,8 @@ class UsersController < ApplicationController
 	end
 
 	def show
+		@user = User.find(params[:id])
+		@new_comment = @user.comments.build
 	end
 
 	private
