@@ -2,7 +2,8 @@
 %h3 ACTIVE ASSIGNMENTS
 %br
 - @assignments.each do |assignment|
-	%a{href: "/assignments/#{assignment.id}/edit"} #{assignment.title}, #{assignment.due_date}
+	%a{href: "/assignments/#{assignment.id}"} #{assignment.title}, #{assignment.due_date}
 	%br
+	= button_to "EDIT", url: "/assignments/#{assignment.id}/edit"
 %br
 = button_to "CREATE NEW ASSIGNMENT", new_assignment_path, method: :get

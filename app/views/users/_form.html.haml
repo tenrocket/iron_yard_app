@@ -1,5 +1,5 @@
 ASSIGNMENT
-= f.select :assignment_id, Assignment.all.collect {|a| ["#{a.title}, #{a.due_date}", a.id]}
+= f.select :assignment_id, Assignment.cohort.all.collect {|a| ["#{a.title}, #{a.due_date}", a.id]}
 TITLE
 = f.text_field :title
 LINKS

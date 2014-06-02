@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 			if params[:request] == "1"
 				UserMailer.new_admin_request(@new_user)
 			end
-			redirect_to users_path, notice: "Thanks for signing up!  You are awesome."
+			redirect_to users_path, notice: "Thanks for signing up! Now please login to confirm your new account."
 		else
 			render :new
 		end
