@@ -5,17 +5,6 @@
 	%a{href: "/locations/#{location.id}"} #{location.city}, #{location.state}
 	%br
 %br
-%h3 ADD NEW LOCATION
-= form_for Location.new, method: :post do |f|
-	CITY:
-	= f.text_field :city
-	STATE:
-	= f.text_field :state
-	ZIP:
-	= f.text_field :zip
-	ADDRESS:
-	= f.text_field :address
-	%br
-	%br
-	= f.submit "SUBMIT LOCATION"
 
+
+= button_to "ADD LOCATION", new_location_path, method: :get

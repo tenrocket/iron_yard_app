@@ -15,7 +15,7 @@ class SubmissionsController < ApplicationController
 		if @new_submission.save
 			redirect_to submissions_path
 		else
-			redirect_to :new
+			redirect_to :back, notice: 'Sorry, you can only submit once per assignment.'
 		end
 	end
 
@@ -60,7 +60,7 @@ class SubmissionsController < ApplicationController
 		if @user.admin == true || @user.id == @submission.user.id
 			@new_comment = Comment.new
 		else
-			redirect_to :back, notice: "Access denied.  Only administrators may view submissions."
+			redirect_to submissions_path, notice: "Access denied.  Only administrators may view submissions."
 		end
 	end
 

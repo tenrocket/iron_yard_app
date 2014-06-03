@@ -5,7 +5,12 @@ class LocationsController < ApplicationController
 	end
 
 	def new
-		@new_location = Location.new
+		@user = current_user
+		if @user.admin == true
+			@new_location = Location.new
+		else
+			redirect_to :back, notice: "Sorry, only admins have permission to add locations."
+		end
 	end
 
 	def create

@@ -1,3 +1,2 @@
 = @submissions.each do |s|
-	= s.user.name
-/ 	%a{href: "/submissions/#{s.id}"} #{s.title}
+	%a{href: "/submissions/#{s.id}"} #{s.title}

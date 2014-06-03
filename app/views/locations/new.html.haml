@@ -1,0 +1,13 @@
+%h3 ADD NEW LOCATION
+= form_for Location.new, method: :post do |f|
+	CITY:
+	= f.text_field :city
+	STATE:
+	= f.text_field :state
+	ZIP:
+	= f.text_field :zip
+	ADDRESS:
+	= f.text_field :address
+	%br
+	%br
+	= f.submit "SUBMIT LOCATION"

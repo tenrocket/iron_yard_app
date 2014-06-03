@@ -16,3 +16,9 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'carrierwave'
 gem 'debugger'
 gem 'haml'
+
+group :test do
+	gem 'rspec-rails'
+	gem 'capybara'
+	gem 'factory_girl_rails'
+end
