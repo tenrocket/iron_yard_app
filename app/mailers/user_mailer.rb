@@ -16,7 +16,6 @@ class UserMailer < ActionMailer::Base
 	def new_admin_request(user)
 		@user = user
 		admin = User.where(admin: true)
-		debugger
 		admin.each do |a|
 			mail(to: a.email, subject: "#{@user.name} has requested admin status." )
 		end
